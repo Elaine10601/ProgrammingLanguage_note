@@ -1,0 +1,89 @@
+stdio.h // printf
+stdbool.h // bool type
+string.h //strlen strcat strcpy strcmp
+math.h //sqrt ceil floor pow abs acos asin atan cbrt cos exp sin tan
+
+
+~output: printf()
+   printf("Hellow");
+   printf("%d",int); //or bool
+   printf("%i",int);
+   printf("%f",float); //"%.1f" mean 1 decimal,no mean 6
+   printf("%lf",double);
+   printf("%c",char); //and single character in string
+   printf("%s",string);
+   printf("My number is %d and my letter is %c", myNum, myLetter);
+   printf("%lu\n", sizeof(memory_size)); //long unsigbed int(%lu) instead int(%d)
+   printf("%p", &address); //it's in hexadecimal form and use "%p" print pointer
+~input: scanf(format, address)
+   scanf("%d %c", &int, &char);
+   scanf("%s", string); // only read single word
+   fgets(fullName, sizeof(fullName), stdin);// read a line of text
+
+~backslash escape sequences: \n(new line) \t(tab) \0(null) \\ \" \' (use in  "")
+~comments: // /**/
+
+~variables: int(2 or 4 bytes) float(4 bytes) double(8 bytes) char(1 bytes) bool
+~conversion: Implicit(automatically) & Explicit(manually)
+~constants: const(use uppercase)
+
+~arithmetic operator: +(addition) -(subtraction) *(multiplication) /(division) %(modulus) ++(increment) --(decrement)
+~assignment operator: = += -= *= /= %= &= |= ^= >>= <<=
+~comparison operator: == != > < >= <= (can use to compare two -> bool)
+~logical operator: && || !
+~sizeof operator: sizeof()
+
+~conditional statemants: if(condition true) else(condition false) else if(first condition false and new condition) switch(many alternative blocks)
+~ternary operator: variable = (condition) ? True : False; -> short-hand if else
+~switch(expression) {
+  case x:   // code block
+    break;  // no must
+  case y:   // code block
+    break;  // no must
+  default: // code block  //optional & when no match}
+~loop: while do/while for(know exactly times, before executed; condition; after every times executed)
+~nested loop: inner loop executed more than outer loop
+~break: jump out of the loop
+~continue: break one iteration in the loop and continue with the next iteration
+
+~single dimension array: type arrayname[]={}; //indexes start with 0
+~multidimensional array: 2D( type name[row][column]={{r1},{r2}...};)
+
+~string: char greetings[] = "Hello World!";
+               char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};
+~string length: strlen(no include '\0') sizeof(include '\0' and when set size return the memory size)
+~concatenate strings: strcat(str1, str2); //str1=str1+str2 
+~copy string: strcpy(str1, str2); //str1=str2
+~compare strings: strcmp(str1, str2) //if return 0 mean equal
+
+~pointer: int* ptr = &myAge; //ptr==&myAge //*ptr==myAge
+~name of an array = memory address of the first element //arr==&arr[0]
+   arr[2]==*(arr+2)
+
+~function: void myFunction(); //function declaration & above main()
+                    void myFunction() {} //function definition & below main()
+~recursion: making a function call itself
+
+~sqrt(find the square root) ceil(upward to number nearest integer) floor(downward to number nearest integer) pow(x,y)(x^y) cbrt(cube root of x) exp(E^x)
+
+~FILE *fptr; 
+   fptr = fopen("filename.txt", "mode"); //mode:w,a,r
+   fclose(fptr):
+~"w": fprintf(fptr, "text"); //write & old will be deleted
+~"a": fprintf(fptr, "text"); //write & append content at the end
+~"r": fgets(String, size, fptr); //only read the first line of the file
+          while(fgets(myString, 100, fptr)) {} //read every line of the file
+          //if open file false fptr==NULL
+
+~structures:struct name{ type member; }s1;  //use s1.member call single
+~strcpy(s1.String, "Some text"); //string is char[]
+   struct Structure s1 = {13, 'B', "Some text"};
+~cope structures: s2 = s1;
+
+~enumeration: represents a group of constants & often used in switch statements
+   enum Level {
+       LOW,
+       MEDIUM,
+       HIGH =4        }; //LOW==0, MEDIUM==1... but HIGH==4 
+   //if LOW==4 then MEDIUM==5, HIGH==6...
+   enum Level Var = MEDIUM; //Var==1
