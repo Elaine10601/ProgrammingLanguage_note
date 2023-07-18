@@ -1,0 +1,132 @@
+using System;  //use classes from System namespace
+namespace HelloWorld{ //organize code and a container for classes and other namespaces
+  class Program  { //a container for data and methods //run in C# must be inside a class
+    static void Main(string[] args)    {
+      Console.WriteLine("Hello World!");   }}} //Console is a class of the System namespace, which has a WriteLine() method
+
+
+~input: Console.ReadLine(); //returns a string
+~output: Console.WriteLine(); Console.Write();
+                //+ to combine variable or text
+~comment: // /**/
+
+~constant: const
+~data type: int(4B) long(8B, end with 'L') bool char(2B) string
+                     float(4B, end with 'F') double(8B, end with 'D') //'e'/'E' + n=10^n
+~type casting: implicit casting (automatically) convert smaller to larger  size//char -> int -> long -> float -> double
+                          explicit casting (manually) - convert larger to smaller size//double -> float -> long -> int -> char
+                 //type conversion method: Convert.ToBoolean() Convert.ToDouble() Convert.ToString() Convert.ToInt32 (int) and Convert.ToInt64 (long)
+
+~string property: name.Length
+~string method: name.ToUpper() name.ToLower() name.IndexOf("") name.Substring(copeFpos)
+~string concatenation: '+' or string.Concat(x,y) or interpolation
+~string interpolation: string name = $"My full name is: {firstName} {lastName}";
+~escape character: \' \" \\ \n \t \b
+
+~arithmetic operator: + - * / % ++ --
+~assignment operator: = += -= *= /= %= &= |= ^= >>= <<=
+~comparison operator: == != > < >= <=
+~logical operator: && || !
+~math: Math.Max(x,y) Math.Min(x,y) Math.Sqrt(x) Math.Abs(x) Math.Round(x) 
+
+~if/else if/else 
+   short-hand if else(ternary operator):var=()?true:flase;
+~switch:switch(expression) 
+              {
+                   case x:// code block
+                       break;
+                   case y:// code block
+                       break;
+                   default:// code block
+                       break;           }
+~loop: while do/while for foreach
+            foreach (type varName in arrayName) {} //arrayName[0-?]==varName 
+~break continue
+
+~array: type[] name = {}; //name.Length get size
+               type[] name = new type[num];
+               type[] name = new type[num]{};
+               type[] name = new type[]{};
+               type[] name; name = new type[]{};
+~Array.Sort(name) //ASCII min to max
+~System.Linq namespace: arrayname.Max() arrayname.Min() arrayname.Sum() //sum only number
+~multidimensional array:[](1D) [,](2D, [0,0] mean the frist) [,,](3D)
+         array1D.Length  array2D.GetLength(row)
+
+~method/function: static void Method(type name) {} //create in the class
+                              //static mean it belong to class and not an object of class 
+                              //parameter can defult to avoid no argument, just use '='
+                              //return need to change "void" to other return type
+                              //Method(name1:val1,name2:val2); ->the order not matter
+~method overloading: method can have the same name with different parameters(the number or type are different)
+
+~oop: Object-Oriented Programming
+~class: class Car {
+                   string color = "red";
+                   static void Main(string[] args) {
+                         Car myObj = new Car();
+                         Console.WriteLine(myObj.color); }}
+               //public -> be accessible for other classes
+               //a static method can be accessed without creating an object of the class, while public methods can only be accessed by objects.
+               //constructor: public Car(){} -> cannot return, all classes have
+~access modifier: public(all) private(only in class, default) protected(in class and inherit) internal(own assembly) // protected internal & private protected
+~encapsulation: declare data as private, and through properties 
+                             can read-only or write-only
+                             provide public get and set method change data
+                  class Person{
+                      private string name; // field
+                      public string Name   // property{
+                           get { return name; }   // get method, return ==get;
+                           set { name = value; }  // set method, value mean we assign val ==set; -> myObj.Name = "Liam"; then myObj.Name is "Liam" 
+                      }}
+
+~inheritance: derived(child) and base(parent) class
+                        class Parent{}
+                        class Child : Parent{} //use ":"
+                        sealed class Vehicle{} //the class cannot be inherited
+~polymorphism: many forms, when inheritance
+                           base class would overrides the derived class when same name -> base add "virtual" and derived add "override"
+                  class Animal  // Base class (parent) {
+                      public virtual void animalSound() { Console.WriteLine("The animal makes a sound"); }}
+                  class Pig : Animal  // Derived class (child) {
+                      public override void animalSound() { Console.WriteLine("The pig says: wee wee"); }}
+~abstract: abstract class cannot creat must be inherited and abstract method not have body provided by derived class
+               abstract class Animal{  
+                     public abstract void animalSound();
+                     public void sleep()  { Console.WriteLine("Zzz"); }} // Regular method
+               class Pig : Animal{
+                     public override void animalSound() { // The body of animalSound() is provided here
+                           Console.WriteLine("The pig says: wee wee"); }}
+~interface: completely abstract, is an interface not a class, default  abstract and public, no constructor
+               interface Animal {
+                     void animalSound(); // interface method (does not have a body)
+                     void run(); // interface method (does not have a body)
+               } //use interface don't use "override"
+~multiple interfaces:  c# no "multiple inheritance" but can achieve with interfaces
+               class DemoClass : IFirstInterface, ISecondInterface {}
+
+~enum: represent a group of constants, often used in switch
+               class Program{
+                  enum Level  {
+                      Low,       //0
+                      Medium,  //1
+                      High,       //2
+                      a=6,       //6
+                      b,            //7
+                 }
+                 static void Main(string[] args) {
+                     Level myVar = Level.Medium;       //(int)Level.Medium == 1
+                    Console.WriteLine(myVar);     }} //==Medium
+
+~file(using System.IO namespace): File.AppendText() File.Copy()  File.Create() File.Delete() File.Exists() File.ReadAllText("file.txt") File.Replace() File.WriteAllText("file.txt","string");
+
+~exception-try..catch: C# will normally stop and generate an error message when error (throw an exception)
+                try {
+                     //  Block of code to try
+                } catch (Exception e){ //e.Message is the error message
+                    //  Block of code to handle errors, when try code error
+                }finally{
+                    //no matter the end and not must
+                }
+~throw: allow create a custom error, used together with an exception class (ArithmeticException, FileNotFoundException, IndexOutOfRangeException, TimeOutException, etc)
+                throw new ArithmeticException("Error."); //enforce stop
