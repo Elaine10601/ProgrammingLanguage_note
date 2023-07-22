@@ -1,0 +1,367 @@
+C:\Users\Your Name>java -version //check have Java installed on Wondows PC or not
+C:\Users\Your Name>javac Main.java //compile code
+C:\Users\Your Name>java Main //run the file
+
+public class Main { //Main is filename
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }}
+
+~output: System.out.println(); System.out.print();
+              //'+' combine text or number
+~input: nextBoolean() nextByte() nextDouble() nextFloat() nextInt() nextLine() nextLong() nextShort()
+              //import java.util.Scanner;
+              Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+              String userName = myObj.nextLine();  // Read user input
+~comment: // /**/
+~name can use $, _
+
+~Primitive type: byte(1B) short(2B) int(4B) long(8B, end with 'L') float(4B, end with 'f') double(8B, end with 'd') boolean char(2B, can set ASCII)
+        //floating point can plus 'e'/'E' and n -> 10^n
+        //be predefined in Java and has alway a value
+~Non-primitive/reference type: String(refer to an object) Arrays Classes Interface
+             //be created by programmer and not defined by Java(except for String)
+            //can call methods and can be null
+~constant: final
+~Widening Casting(automatically): convert smaller to larger size
+              //byte -> short -> char -> int -> long -> float -> double
+~Narrowing Casting(manually): convert larger to smaller size
+             //double -> float -> long -> int -> char -> short -> byte
+
+~arithmetic operator: + - * / % ++ --
+~assignment operator: = += -= *= /= %= &= |= ^= >>= <<=
+~comparison operator: == != > < >= <=
+~logical operator: && || !
+
+~string: name.length() name.toUpperCase() name.toLowerCase() name.indexOf("") a.concat(b)->a+b
+~Escape character: \' \" \\ \n \r \t \b \f
+
+~Math: Math.max(x,y) Math.min(x,y) Math.sqrt(x) Math.abs(x) Math.random()->0.0<=&<1.0
+~if/else if/else 
+   variable = (condition) ? expressionTrue :  expressionFalse;
+~switch(expression) {
+       case x: // code block
+            break;
+       case y: // code block
+            break;
+       default:   // code block
+   }
+~loop: while do/while for for-each(array)
+        String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+        for (String i : cars) { System.out.println(i); }
+~break continue
+
+~array: type[] name={}; //name.length
+               type[][] name={{},{}...}; //name.length*name[i].length
+
+~method/function: 
+          public class Main {
+              static void myMethod(String a) { //static mean belong to Main and not object
+                 // code to be executed
+              }
+              public static void main(String[] args) {    myMethod(""); }}
+~Overloading: have the same name with different parameters
+~scope: 
+          // Code here CANNOT use x
+          { // This is a block
+             // Code here CANNOT use x
+             int x = 100;
+            // Code here CAN use x
+         } // The block ends here
+         // Code here CANNOT use x
+~Recursion: make a function call itself
+
+~file: import java.io.File; 
+~file method: canRead() canWrite() createNewFile() delete() exists() mkdir() //boolean type
+                        getName() getAbsolutePath() //String type
+                        length() //long type
+                        list() //String[] type
+~create file: 
+             import java.io.File;  // Import the File class
+             import java.io.IOException;  // Import the IOException class to handle errors
+             public class CreateFile {
+                 public static void main(String[] args) {
+                     try {
+                         File myObj = new File("filename.txt");
+                        //File myObj = new File("C:\\Users\\MyName\\filename.txt"); //for Windows
+                        ///Users/name/filename.txt //On Mac and Linux 
+                         if (myObj.createNewFile()) {
+                             System.out.println("File created: " + myObj.getName());
+                         } else {
+                             System.out.println("File already exists."); }
+                     } catch (IOException e) {
+                         System.out.println("An error occurred.");
+                         e.printStackTrace(); }}}
+~write file: 
+                FileWriter myWriter = new FileWriter("filename.txt");
+                myWriter.write("Files in Java might be tricky, but it is fun enough!");
+                myWriter.close();
+~read file: 
+                import java.io.File;  // Import the File class
+                import java.util.Scanner; // Import the Scanner class to read text files
+                public class ReadFile {
+                    public static void main(String[] args) {
+                        File myObj = new File("filename.txt");
+                        Scanner myReader = new Scanner(myObj);
+                        while (myReader.hasNextLine()) {
+                            String data = myReader.nextLine();
+                            System.out.println(data); }
+                        myReader.close();  }}
+~other r/w file: FileReader BufferedReader Files Scanner FileInputStream FileWriter BufferedWriter FileOutputStream
+~get file information:
+                import java.io.File;  // Import the File class
+                public class GetFileInfo { 
+                     public static void main(String[] args) {
+                     File myObj = new File("filename.txt");
+                     if (myObj.exists()) {
+                         System.out.println("File name: " + myObj.getName());
+                         System.out.println("Absolute path: " + myObj.getAbsolutePath());
+                         System.out.println("Writeable: " + myObj.canWrite());
+                         System.out.println("Readable " + myObj.canRead());
+                         System.out.println("File size in bytes " + myObj.length());
+                     } else {
+                         System.out.println("The file does not exist.");}}}
+~delete file: 
+               File myObj = new File("filename.txt"); 
+                if (myObj.delete()) { 
+                      System.out.println("Deleted the file: " + myObj.getName());
+               } else {
+                      System.out.println("Failed to delete the file."); } 
+~delete folder: 
+               File myObj = new File("C:\\Users\\MyName\\Test"); 
+               if (myObj.delete()) { 
+                     System.out.println("Deleted the folder: " + myObj.getName());
+              } else {
+                     System.out.println("Failed to delete the folder."); } 
+
+~OOP:  Object-Oriented Programming
+~create class: public class Main {  int x = 5; }
+~create object: 
+                           public class Main {
+                                 int x = 5;
+                                 public static void main(String[] args) {
+                                 Main myObj = new Main();
+                                 myObj.x = 25; // x is now 25
+                                 System.out.println(myObj.x);  }}
+~multiple classes:  can create two files in the same directory/folder:
+~static can be accessed without creating an object, unlike public can only be accessed by object
+~Constructors: match the class name and cannot have return, called when create object
+~Access Modifiers: public default(only in same package) -> classes
+                                  public private default(only in same package) protected(in same package and subclasses) -> methods, attributes, constructors
+~Non-Access Modifiers: final(only) abstract(cannnot object) -> classes
+                                   final(const) static(without object) abstract(not  body) transient synchronized volatile -> methods, attributes
+~encapsulation: use get and set method
+
+~built-in packages: packages from the Java API, https://docs.oracle.com/javase/8/docs/api/
+                   import package.name.Class;   // Import a single class
+                   import package.name.*;   // Import the whole package
+
+                   import java.util.Scanner;
+                   class MyClass {
+                        public static void main(String[] args) {
+                             Scanner myObj = new Scanner(System.in);
+                             System.out.println("Enter username");
+                             String userName = myObj.nextLine();
+                             System.out.println("Username is: " + userName);  }}
+~user-defined packages: create your own packages
+                                  └── root
+                                     └── mypack
+                                        └── MyPackageClass.java
+                     package mypack;
+                     class MyPackageClass {
+                          public static void main(String[] args) {
+                               System.out.println("This is my package!");  }}
+
+                      C:\Users\Your Name>javac MyPackageClass.java //compile file
+                      C:\Users\Your Name>javac -d . MyPackageClass.java  //compile the package->This forces the compiler to create the "mypack" package.
+                      C:\Users\Your Name>java mypack.MyPackageClass //run  MyPackageClass.java
+                      //"-d" specifies where to save the class file, "." keep the package within the same directory
+
+~inheritance: subclass(child) superclass(parent)
+                     class childclass extends parentclass {}
+~polymorphism: inheritance
+                     class Animal {
+                          public void animalSound() {    
+                              System.out.println("The animal makes a sound");  }}
+                     class Pig extends Animal {
+                          public void animalSound() {
+                              System.out.println("The pig says: wee wee");  }}
+                     class Dog extends Animal {
+                          public void animalSound() {
+                              System.out.println("The dog says: bow wow");  }}
+
+~inner class: a class within a class, can be private or protected
+                     class OuterClass { int x = 10;
+                           class InnerClass { int y = 5;  }}
+                     // OuterClass myOuter = new OuterClass();
+                     //OuterClass.InnerClass myInner = myOuter.new InnerClass();
+                        also can be static
+                     static class InnerClass {    int y = 5;  }
+                     //OuterClass.InnerClass myInner = new OuterClass.InnerClass();
+                         can access attributes and methods of the outer class
+
+~abstract: class(cannot create object) method(only in abstract class and not body)
+~interface: completely avstract class, empty bodies
+                     //methods are by default abstract and public
+                     //attributes are by default public, static and final
+                     interface Animal {
+                          public void animalSound(); // interface method (does not have a body)
+                     }
+                     class Pig implements Animal {
+                          public void animalSound() {// The body of animalSound() is provided here
+                              System.out.println("The pig says: wee wee");  }}
+~multiple interfaces: "multiple inheritance" can be achieved -> Java not support "multiple inheritance"
+                      class DemoClass implements FirstInterface, SecondInterface {}
+
+~enum: represents a group of constants, often used in switch
+                      enum Level {  LOW,
+                                              MEDIUM,
+                                              HIGH
+                                           }
+                       // Level myVar = Level.MEDIUM; ->myVar == "MEDIUM"
+                      for (Level myVar : Level.values()) {  System.out.println(myVar);} // loop though enum
+
+~date and time: //import java.time.LocalDate; // LocalDate LocalTime LocalDateTime DateTimeFormatter
+                            LocalDate myObj = LocalDate.now(); // Create a date object
+                            LocalTime myObj = LocalTime.now();
+                            LocalDateTime myObj = LocalDateTime.now(); //2023-07-21T17:42:03.064287
+                            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                            //yyyy-MM-dd("1988-09-29") dd/MM/yyyy("29/09/1988") dd-MMM-yyyy("29-Sep-1988") E, MMM dd yyyy("Thu, Sep 29 1988")
+                            String formattedDate = myDateObj.format(myFormatObj); //21-07-2023 17:42:03
+
+~ArrayList: is a resizable array
+                             import java.util.ArrayList; // import the ArrayList class
+                             ArrayList<String> cars = new ArrayList<String>(); // Create an ArrayList object
+                              cars.add("Volvo");
+                              cars.get(0); //cars == [Volvo, , ...]
+                              cars.set(0, "Opel");
+                              cars.remove(0);
+                              cars.clear();
+                              cars.size();
+                              for (String i : cars) { System.out.println(i); }
+~sort ArrayList: import java.util.Collections;
+                               Collections.sort(cars);  // Sort cars
+~LinkedList:         import java.util.LinkedList;
+                               LinkedList<String> cars = new LinkedList<String>();
+                              //add get set......like ArrayList
+~ArrayList works: has a regular array inside it
+                                  If the array is not big enough, a new, larger array is created to replace the old one and the old one is removed.
+~LinkedList works: stores its items in "containers"
+                                  each container has a link to the next container in the list
+                                  To add an element to the list, the element is placed into a new container and that container is linked to one of the other containers in the list.
+~Use an ArrayList for storing and accessing data, and LinkedList to manipulate data.
+~LinkedList Methods: car.addFirst() car.addLast() 
+                                     car.removeFirst() car.removeLast()
+                                     car.getFirst() car.getLast()   
+
+~HashMap: store items in "key/value" pairs
+                                  import java.util.HashMap; // import the HashMap class
+                                  HashMap<String, String> capitalCities = new HashMap<String, String>();
+                                  capitalCities.put("England", "London");
+                                  capitalCities.get("England"); //London ->use key get value
+                                  capitalCities.remove("England");
+                                  capitalCities.clear();
+                                  capitalCities.size();
+                                  for (String i : capitalCities.keySet()) { System.out.println(i); }// Print keys
+                                  //keySet() if only want keys, values() if only want values
+~HashSet:  a collection of items where every item is unique, even though is added twice it only appears once in the set 
+                                import java.util.HashSet; // Import the HashSet class
+                                HashSet<String> cars = new HashSet<String>();
+                                cars.add("Volvo");
+                                cars.contains("Mazda"); // check whether an item exists
+                                cars.remove("Volvo");
+                                cars.clear();
+                                cars.size();
+                                for (String i : cars) {  System.out.println(i);}
+
+~iterator: an object that can be used to loop through collections, like ArrayList and HashSet
+                                import java.util.Iterator;
+                                Iterator<String> it = cars.iterator(); //cars is ArrayList
+                                System.out.println(it.next()); // Print the first item
+                                while(it.hasNext()) {  System.out.println(it.next());} //loop through a collection
+
+                                while(it.hasNext()) {
+                                    Integer i = it.next();
+                                    if(i < 10) { it.remove(); }} //remove items from  collection
+~wrapper class: provide a way to use primitive data types (int, boolean, etc..) as objects (Byte Short Integer Long Float Double Boolean Character)
+                            Sometimes you must use wrapper classes, for example when working with Collection objects, such as ArrayList, where primitive types cannot be used (the list can only store objects):
+~wrapper method: intValue() byteValue() shortValue() longValue() floatValue() doubleValue() charValue() booleanValue()
+                               toString() length()
+
+~Exceptions: stop and generate an error message when error occurs (Java will throw an exception)
+                        try {  //  Block of code to try
+                        }catch(Exception e) {  //  Block of code to handle errors
+                        }finally {  // regardless of the result
+                        }
+                        // throw new ArithmeticException("")
+                        //ArithmeticException, FileNotFoundException, ArrayIndexOutOfBoundsException, SecurityException, etc
+
+~RegEX: import java.util.regex.Matcher; //Matcher Pattern PatternSyntaxException
+                Pattern pattern = Pattern.compile("w3schools", Pattern.CASE_INSENSITIVE);
+                //[abc] find one abc char, [^abc] find one not abc char, [0-9] find one 0-9 char -> "[][]..."
+                //Pattern.CASE_INSENSITIVE Pattern.LITERAL Pattern.UNICODE_CASE
+                Matcher matcher = pattern.matcher("Visit W3Schools!");
+                boolean matchFound = matcher.find();
+~Metacharacters: |(a match for any one of the patternsas in: cat|dog|fish) .(just one instance of any character) ^(beginning) $(end) \d(digit) \s(whitespace) \b(word beginning or end) \uxxxx(Unicode hexadecimal)
+~Quantifiers: n+(Matches any string that contains at least one n)
+                         n*(Matches any string that contains zero or more occurrences of n)
+                         n?(Matches any string that contains zero or one occurrences of n)
+                         n{x} (Matches any string that contains a sequence of X n's)
+                         n{x,y} (Matches any string that contains a sequence of X to Y n's)
+                         n{x,}(Matches any string that contains a sequence of at least X n's)
+
+~thread: can be used to perform complicated tasks in the background
+                      //Extend Syntax: cannot extend any other class
+                       public class Main extends Thread {
+                            public static void main(String[] args) {
+                                 Main thread = new Main();
+                                 thread.start();
+                                 System.out.println("This code is outside of the thread");  }
+                            public void run() {
+                                 System.out.println("This code is running in a thread");}}
+
+                      //Implement Syntax: it is possible to extend from another class as well, like: class MyClass extends OtherClass implements Runnable
+                       public class Main implements Runnable {
+                             public static void main(String[] args) {
+                                 Main obj = new Main();
+                                 Thread thread = new Thread(obj);
+                                 thread.start();
+                                 System.out.println("This code is outside of the thread");  }
+                            public void run() {
+                                 System.out.println("This code is running in a thread");}}
+~concurrency problems: When the threads and main program are reading and writing the same variables, the values are unpredictable
+                                          it is best to share as few attributes between threads as possible
+                          // Wait for the thread to finish
+                           while(thread.isAlive()) { //check whether the thread has finished running before using any attributes that the thread can change
+                              System.out.println("Waiting...");}
+
+~Lambda Expressions: add in Java 8, are similar to methods, but they do not need a name and they can be implemented right in the body of a method
+                              parameter -> expression //immediately return a value
+                              (parameter1, parameter2) -> expression
+                              (parameter1, parameter2) -> { code block } //can return
+
+                 numbers.forEach( (n) -> { System.out.println(n); } ); // print ArrayList numbers
+                 import java.util.function.Consumer; //use Consumer interface to store a lambda expression in a variable
+                 Consumer<Integer> method = (n) -> { System.out.println(n); };
+                 numbers.forEach( method );// print ArrayList number
+
+                 //take a lambda expression as a parameter
+                 interface StringFunction {String run(String str);}
+                 public class Main {
+                      public static void main(String[] args) {
+                          StringFunction exclaim = (s) -> s + "!";
+                          StringFunction ask = (s) -> s + "?";
+                          printFormatted("Hello", exclaim);
+                          printFormatted("Hello", ask);           }
+                      public static void printFormatted(String str, StringFunction format) {
+                         String result = format.run(str);
+                         System.out.println(result);  }}
+
+
+~Count Words:  String words = "One Two Three Four";
+                           int countWords = words.split("\\s").length;
+                           System.out.println(countWords);
+
+~keyword: https://www.w3schools.com/java/java_ref_keywords.asp
+~string method: https://www.w3schools.com/java/java_ref_string.asp
+~math method: https://www.w3schools.com/java/java_ref_math.asp
